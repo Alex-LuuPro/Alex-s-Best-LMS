@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DBFirstEF_LMS.Models.Assignment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Section
+        </th>
+        <th>
+            Course ID
+        </th>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Assignment Name
+        </th>
+        <th>
+            Open Date
+        </th>
+        <th>
+            Due Date
+        </th>
+        <th>
+            Manage
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.section_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.Course.course_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.Course.course_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.assignment_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.assignment_due_dt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.assignment_open_dt)
+        </td>
+
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.assignment_id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.assignment_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.assignment_id })*@
+            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = item.assignment_id })'">Edit</button>
+            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.assignment_id })'">Details</button>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.assignment_id })'">Delete</button>
+        </td>
+    </tr>
+}
+
+</table>

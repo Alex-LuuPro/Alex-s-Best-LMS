@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DBFirstEF_LMS.Models.Assignment>
+
+@{
+    ViewBag.Title = "StaffClass";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+}
+<h2></h2>
+@ViewBag.Message
+<p>
+   <a href=" @Url.Action("Create","Assignments")">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Assignment
+        </th>
+        <th>
+            Due Date
+        </th>
+        <th>
+            Open Date
+        </th>
+        <th>
+            Course 
+        </th>
+        <th>
+            Course ID
+        </th>
+        <th>
+            Section ID
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.assignment_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assignment_due_dt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assignment_open_dt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Course.course_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Course.course_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.section_id)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Assignments", new { id = item.assignment_id })">Edit</a> |
+                <a href="@Url.Action("Index", "StudentAssignments", new { id = item.assignment_id })">Show Student Grades</a> |
+                @*@Html.ActionLink("Details", "Details", new { id = item.assignment_id }) |*@
+                <a href="@Url.Action("Delete", "Assignments", new { id = item.assignment_id })">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

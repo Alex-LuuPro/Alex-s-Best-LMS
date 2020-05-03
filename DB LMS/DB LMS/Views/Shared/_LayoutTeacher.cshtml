@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body style = "background-image : url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/blue-moving-flowing-abstract-waves-on-white-background-blurred-smooth-graphic-motion-design-video-animation-1920x1080_vhhueydte__F0000.png'); background-size:100%;">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <font size="55">
+                    @Html.ActionLink("◮ Pyramid SchemA+ ◭", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </font>
+            </div>
+            <div class="navbar-right">
+                <font size="20">
+                    @Html.ActionLink("[ Logout 🚪 ]", "Logout", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </font>
+            </div>
+
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"></ul>
+        </div>
+    </div>
+
+
+
+
+
+
+        <div class="col-md-offset-1 col-md-10">
+            <br>
+            @Html.ActionLink("🏠 Teacher", "Index", "TeacherPortal", null, new { @class = "btn btn-info btn-small" })
+            <br>
+        </div>
+
+
+
+
+
+    <div class="container body-content" align="center">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DBFirstEF_LMS.Models.StudentAssignment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Grade
+        </th>
+        <th>
+            Assignment Name
+        </th>
+        <th>
+            Course and Section ID
+        </th>
+        <th>
+            Student ID
+        </th>
+        <th>
+            Student First Name
+        </th>
+        <th>
+            Student Last Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.grade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assignment.assignment_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.Course.course_name)  @Html.DisplayFor(modelItem => item.Section.section_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.StudentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Lname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit Grade", "Edit", new { secid = item.section_id, aid = item.assignment_id, sid = item.studentID })
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>

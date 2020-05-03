@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DBFirstEF_LMS.Models.StaffLogin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Staff ID
+        </th>
+        <th>
+           First Name       
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Staff Password
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.staff_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.staff_pwd)
+        </td>
+
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.staff_id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.staff_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.staff_id })*@
+            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = item.staff_id })'">Edit</button>
+            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.staff_id })'">Details</button>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.staff_id })'">Delete</button>
+        </td>
+    </tr>
+}
+
+</table>

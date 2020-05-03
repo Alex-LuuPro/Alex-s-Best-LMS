@@ -1,0 +1,83 @@
+﻿@model IEnumerable<DBFirstEF_LMS.Models.Section>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Semester
+        </th>
+        <th>
+            Course
+        </th>
+        @*<th>
+            Professor ID
+        </th>*@
+        <th>
+            Professor
+        </th>
+        @*<th>
+             
+        </th>*@
+        <th>
+            Day of the Week
+        </th>
+        <th>
+            Start Time
+        </th>
+        <th>
+            End Time
+        </th>
+        <th>
+            Manage
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester.sem_desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.course_name)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Staff.staff_id)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.first_name)
+            @Html.DisplayFor(modelItem => item.Staff.last_name)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Staff.last_name)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.day_of_week)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.start_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.end_time)
+        </td>
+
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.section_id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.section_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.section_id })*@
+            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = item.section_id })'">Edit</button>
+            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.section_id })'">Details</button>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.section_id })'">Delete</button>
+        </td>
+    </tr>
+}
+
+</table>

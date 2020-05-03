@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DBFirstEF_LMS.Models.Registered>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Student ID
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Section ID
+        </th>
+        <th>
+            Day of the Week
+        </th>
+        <th>
+            Grade
+        </th>
+        <th>
+            Manage
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.StudentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Lname)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.Course.course_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.section_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section.day_of_week)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grade)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { sectionid = item.section_id, studentid = item.student_id }) |
+        @Html.ActionLink("Details", "Details", new { sectionid = item.section_id, studentid = item.student_id }) |
+        @Html.ActionLink("Unregister", "Delete", new { sectionid = item.section_id, studentid = item.student_id })*@
+            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { sectionid = item.section_id, studentid = item.student_id })'">Edit</button>
+            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", new { sectionid = item.section_id, studentid = item.student_id })'">Details</button>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { sectionid = item.section_id, studentid = item.student_id })'">Unregister</button>
+        </td>
+    </tr>
+}
+
+</table>

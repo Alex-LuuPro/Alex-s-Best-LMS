@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DBFirstEF_LMS.Models.StudentAssignment>
+
+@{
+    ViewBag.Title = "StudentClass";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+<h2>Class Assignment Grades</h2>
+@ViewBag.Message
+<table class="table">
+    <tr>
+        <th>
+            Course
+        </th>
+        <th>
+            Assignment Name
+        </th>
+        <th>
+            Grade
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Course.course_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment.assignment_name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.grade)
+            </td>
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+

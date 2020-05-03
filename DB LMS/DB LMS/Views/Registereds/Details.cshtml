@@ -1,0 +1,43 @@
+﻿@model DBFirstEF_LMS.Models.Registered
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Registered</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Grade
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grade)
+        </dd>
+
+        <dt>
+            Course Section
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section.Course.course_name)  @Html.DisplayFor(model => model.Section.section_id)
+        </dd>
+
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.Fname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { sectionid = Model.section_id, studentid = Model.student_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
